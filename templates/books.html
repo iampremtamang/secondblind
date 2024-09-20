@@ -1,0 +1,272 @@
+{% load static %}
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+<meta name="generator" content="Hugo 0.122.0">
+<title>Books Store</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link href="{% static 'css/style.css' %}" rel="stylesheet" />
+</head>
+  <body>
+    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+      <symbol id="check2" viewBox="0 0 16 16">
+        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+      </symbol>
+      <symbol id="circle-half" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+      </symbol>
+      <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+      </symbol>
+      <symbol id="sun-fill" viewBox="0 0 16 16">
+        <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+      </symbol>
+    </svg>
+
+    
+    <main>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-custom mb-4" >
+        <div class="container">
+           <a class="navbar-brand text-bold" href="{% url 'book_list' %}">Book Store</a>
+        </div>
+    </nav>
+
+
+    <div class="container mb-4">
+        <div class="row">
+            <div id="success-alert" class="alert alert-success alert-dismissible fade show d-none" role="alert">
+                The book has been successfully created.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-3 col-xs-3 col-md-6">
+                <h2 class="pb-0 mb-0"> Books </h2>
+            </div>
+            <div class="col-xs-9 col-sm-9 col-md-6 text-right d-flex justify-content-end">
+                <a class="btn btn-outline-secondary btn-md " href="{% url 'export_books' %}" > <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
+                    <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+                    <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708z"/>
+                  </svg> Export</a> &emsp;
+                  
+                <button class="btn btn-primary btn-md d-flex justify-content-center align-items-middle" data-bs-toggle="modal" data-bs-target="#createModal" > <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                  </svg>Create book</button>
+                
+            </div>
+            
+        </div>
+        <div class="d-flex justify-content-between">
+            <div class="filter-bar-wrapper d-flex">    
+              <form method="get" action="{% url 'book_list' %}" class="mb-4">
+            
+                <div class="row g-3 align-items-center">
+                  <div class="col-12 col-md-3">
+                    <select name="title" id="title" class="form-select w-100">
+                        <option value="">All Titles</option>
+                        {% for title in titles %}
+                            <option value="{{ title }}" {% if title == selected_title %}selected{% endif %}>{{ title }}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+                  <div class="col-12 col-md-3">
+                      <select name="author" id="author" class="form-select w-100">
+                          <option value="">All Authors</option>
+                          {% for author in authors %}
+                              <option value="{{ author }}" {% if author == selected_author %}selected{% endif %}>{{ author }}</option>
+                          {% endfor %}
+                      </select>
+                  </div>
+                  <div class="col-12 col-md-3">
+                      <select name="genre" id="genre" class="form-select w-100">
+                          <option value="">All Genres</option>
+                          {% for genre in genres %}
+                              <option value="{{ genre }}" {% if genre == selected_genre %}selected{% endif %}>{{ genre }}</option>
+                          {% endfor %}
+                      </select>
+                  </div>
+                
+
+                    <!-- Submit and Reset Buttons -->
+                    <div class="col-md-3 d-flex align-items-end">
+                        <button type="submit" class="btn btn-info text-white me-2">Apply</button>
+                        <a href="{% url 'book_list' %}" class="btn btn-secondary">Reset</a>
+                    </div>
+                </div>
+              </form>
+            </div>
+        </div>
+        <div class="table-container">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Author</th>
+                <th scope="col">Genre</th>
+                <th scope="col"> ISBN </th>
+                <th scope="col"> Publication Date </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% if books %}
+              {% for book in books %}
+              <tr>
+                <td scope="row">{{book.id}}</td>
+                <td>{{book.title}}</td>
+                <td>{{book.author}}</td>
+                <td>{{book.genre}}</td>
+                <td>{{book.isbn}}</td>
+                <td>{{book.publication_date}}</td>
+              </tr>
+              {% endfor %}
+              {% else %}
+              <tr>
+                <td colspan="5">* No books found!</td>
+              </tr>
+              {% endif %}
+              
+            
+            </tbody>
+          </table>
+        
+          {% if books %}
+            {% include "_partials/pagination.html" %}
+          {% endif %}
+        </div>
+        
+        
+    </div>
+
+    </main>
+    <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="createModalLabel">Add new book</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p class="p-0 mb-1">Fill in the details below to add a new book.</p>
+            <p id="error-message" class="text-danger"></p>
+            <form id="book-form" method="POST">
+                {% csrf_token %}
+              <div class="mb-b">
+                <label for="title" class="col-form-label">Book Name:</label>
+                <input type="text" class="form-control" id="title" name="title" required pattern="[A-Za-z\s]+" title="Please enter letters only.">
+              </div>
+              <div class="mb-b">
+                <label for="author" class="col-form-label">Author:</label>
+                <input type="text" class="form-control" name="author" id="author" required pattern="[A-Za-z\s]+" title="Please enter letters only.">
+              </div>
+              <div class="mb-b">
+                <label for="genre" class="col-form-label">Genre:</label>
+                <input type="text" class="form-control" name="genre" id="genre" required pattern="[A-Za-z\s]+" title="Please enter letters only.">
+              </div>
+              <div class="mb-b">
+                <label for="isbn" class="col-form-label">ISBN No.:</label>
+                {% comment %} <input type="number" class="form-control" name="isbn" id="isbn" required> {% endcomment %}
+                <input type="text" class="form-control" name="isbn" id="isbn" required pattern="\d{13}" maxlength="13" title="Please enter a 13-digit ISBN number.">
+              </div>
+              <div class="mb-b">
+                <label for="publication_date" class="col-form-label">Publication Date:</label>
+                <input type="date" class="form-control" name="publication_date" id="publication_date" required >
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" id="btn-submit">Create</button>
+              </div>
+            
+            </form>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.min.js" integrity="sha512-eYSzo+20ajZMRsjxB6L7eyqo5kuXuS2+wEbbOkpaur+sA2shQameiJiWEzCIDwJqaB0a4a6tCuEvCOBHUg3Skg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var today = new Date().toISOString().split('T')[0];
+        $('#publication_date').attr('max', today);
+        
+        $('#book-form').on('submit', function(e) {
+            e.preventDefault();
+            
+            // Reset error message
+            $('#error-message').html('');
+            
+            // Validate form fields
+            var name = $('#title').val(); // Corrected selector
+            var author = $('#author').val();
+            var genre = $('#genre').val();
+            var isbn = $('#isbn').val();
+            var publicationDate = $('#publication_date').val();
+            
+            // Validate name, author, and genre (letters and spaces only)
+            var letterSpacePattern = /^[A-Za-z\s]+$/;
+            if (!letterSpacePattern.test(name) || !letterSpacePattern.test(author) || !letterSpacePattern.test(genre)) {
+                $('#error-message').html('Name, author, and genre should contain only letters and spaces.');
+                return;
+            }
+            
+            // Validate ISBN (13 digits)
+            var isbnPattern = /^\d{13}$/;
+            if (!isbnPattern.test(isbn)) {
+                $('#error-message').html('Please enter a valid 13-digit ISBN number.');
+                return;
+            }
+            
+            // If all validations pass, submit the form via AJAX
+            $.ajax({
+                url: "{% url 'book_create' %}",  // Ensure this is properly rendered as a string
+                type: 'POST',
+                data: $(this).serialize(),
+                success: function(response) {
+                    // Hide the createModal
+                    $('#createModal').modal('hide');
+                    
+                    // Update alert message 
+                    $('#success-alert').html(`The book "<strong>${response.name}</strong>" has been successfully created.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`);
+
+                    // Show the success alert
+                    $('#success-alert').removeClass('d-none');
+
+                    // Reset the form fields
+                    $('#book-form')[0].reset();
+
+                    // Auto-hide the alert after 5 seconds
+                    setTimeout(function() {
+                    $('#success-alert').alert('close');
+                    }, 5000);
+
+                    window.reload();
+                },
+                error: function(error) {
+                    // Handle error
+                    console.log(error.responseJSON.message);
+                    $('#error-message').text(error.responseJSON.message);
+                }
+            });
+        });
+        
+        // Optional: Automatically hide the successModal after a few seconds
+        $('#successModal').on('shown.bs.modal', function () {
+            setTimeout(function() {
+                $('#successModal').modal('hide');
+            }, 3000); // 3000 milliseconds = 3 seconds
+        });
+    });
+</script>
+</body>
+</html>

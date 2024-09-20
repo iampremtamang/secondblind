@@ -1,0 +1,36 @@
+    /* Hide spinners for WebKit browsers (Chrome, Safari) */
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Hide spinners for Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+
+  .bg-custom, .btn-primary {
+    background-color: #124d5e !important;
+  } 
+
+  .text-primary {
+    color: #2b99b8 !important;
+  }
+
+  .active-page {
+    color:#ffffff !important;
+    background-color: #124d5e !important;
+  }
+
+
+  .table-container {
+    width: 100%;
+    height: 100%; 
+    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+  }
+
+  table {
+    width: 100%;
+  }
